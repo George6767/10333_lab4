@@ -6,4 +6,18 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Resources\finish.jpg" />
+    <None Remove="Resources\horse.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\finish.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\horse.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
 </Project>

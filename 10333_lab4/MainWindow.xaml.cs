@@ -21,6 +21,7 @@ namespace _10333_lab4
     public partial class MainWindow : Window
     {
         Canvas[] cavases = new Canvas[3];
+        Hipodrome.UserControl1_Horse[] horses = new Hipodrome.UserControl1_Horse[3];
         public MainWindow()
         {
             InitializeComponent();
