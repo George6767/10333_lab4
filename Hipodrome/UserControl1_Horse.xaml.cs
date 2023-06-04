@@ -13,24 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace _10333_lab4
+namespace Hipodrome
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UserControl1_Horse.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserControl1_Horse : UserControl
     {
-        Canvas[] cavases = new Canvas[3];
-        public MainWindow()
+        public UserControl1_Horse()
         {
             InitializeComponent();
-            this.ResizeMode = ResizeMode.NoResize;
-            for(int i=0; i<3; i++)
-            {
-                cavases[i] = new Canvas();
-                Grid.SetRow(cavases[i], i);
-                grid.Children.Add(cavases[i]);
-            }
         }
     }
 }
