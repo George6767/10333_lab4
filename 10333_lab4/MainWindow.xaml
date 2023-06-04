@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_10333_lab4"
         mc:Ignorable="d"
-        Title="Иподром" Height="350" Width="1225">
-    <Grid x:Name="grid" ShowGridLines="True">
+        Title="Иподром" Height="450" Width="1225" FontSize = "24">
+<Grid x:Name="grid" ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
+        <Button Content="Start" Grid.Row="3" Width="200" Margin="100 20 500 20" Click="ButtonStart_Click"/>
+        <Button Content="Reset" Grid.Row="3" Width="200" Margin="500 20 100 20" Click="ButtonClear_Click"/>
 
     </Grid>
 </Window>

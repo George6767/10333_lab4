@@ -25,6 +25,7 @@ namespace _10333_lab4
         Hipodrome.UserControl1_Horse[] horses = new Hipodrome.UserControl1_Horse[3];
         DispatcherTimer timer, timerUpdateSpeed;
         Random random = new Random(); 
+        bool flStart = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -34,17 +35,26 @@ namespace _10333_lab4
                 canvases[i] = new Canvas();
                 Grid.SetRow(canvases[i], i);
                 grid.Children.Add(canvases[i]);
-                horses[i] = new Hipodrome.UserControl1_Horse(random.Next(20, 50));
-                canvases[i].Children.Add(horses[i]);
             }
             timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(1000);
             timer.Tick += new EventHandler(timer_Tick);
-            timer.Start();
 
             timerUpdateSpeed = new DispatcherTimer();
             timerUpdateSpeed.Interval = new TimeSpan(0, 0, 2);
             timerUpdateSpeed.Tick += new EventHandler(timertimerUpdateSpeed_Tick);
+
+        }
+        private void Start()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                canvases[i].Children.Clear();
+                horses[i] = new Hipodrome.UserControl1_Horse(random.Next(20, 50));
+                canvases[i].Children.Add(horses[i]);
+
+            }
+            timer.Start();
             timerUpdateSpeed.Start();
         }
 
@@ -56,9 +66,35 @@ namespace _10333_lab4
             }
         }
 
+        private void ButtonStart_Click(object sender, RoutedEventArgs e)
+        {
+        if(flStart == false)
+            {
+                flStart = true;
+                Start();
+            }
+            if (timer.IsEnabled)
+            {
+                ((Button)sender).Content = "Start";
+                timer.IsEnabled = false;
+                timerUpdateSpeed.IsEnabled = false;
+            }
+            else
+            {
+                ((Button)sender).Content = "Pause";
+                timer.IsEnabled = true;
+                timerUpdateSpeed.IsEnabled = true;
+            }
+        }
+
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+            Start();
+        }
+
         private void timer_Tick(object? sender, EventArgs e)
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++) 
             {
                 horses[i].XHorse += (float)horses[i].GetSpeed() / 12000f;
             }
