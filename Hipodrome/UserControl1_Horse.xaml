@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hipodrome"
              mc:Ignorable="d" 
-             d:DesignHeight="126" d:DesignWidth="100">
+             d:DesignHeight="100" d:DesignWidth="100">
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="20px"/>
@@ -16,6 +16,6 @@
                    HorizontalAlignment="Center" Visibility="Hidden"/>
         <TextBlock x:Name="textBlockPosition" Grid.Row="1"   HorizontalAlignment="Center"
                    FontSize="12" Foreground="Red" Visibility="Hidden"/>
-        <Image Height="90" Width="100" Grid.Row="2" Source="Resources/horse.jpg"/>
+        <Image Height="65" Width="100" Grid.Row="2" Source="Resources/horse.jpg"/>
     </Grid>
 </UserControl>
