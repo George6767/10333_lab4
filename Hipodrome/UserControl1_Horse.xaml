@@ -12,10 +12,10 @@
             <RowDefinition Height="16px"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="textBlockSpeed" FontSize="18" Foreground="White" 
+        <TextBlock x:Name="textBlockSpeed" FontSize="18" Foreground="Black" 
                    HorizontalAlignment="Center" Visibility="Hidden"/>
         <TextBlock x:Name="textBlockPosition" Grid.Row="1"   HorizontalAlignment="Center"
                    FontSize="12" Foreground="Red" Visibility="Hidden"/>
-        <Image Height="65" Width="100" Grid.Row="2" Source="Resources/horse.jpg"/>
+        <Image Height="65" Width="100" Grid.Row="2" Source="Resources/horse.jpg" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseRightButtonDown="Image_MouseRightButtonDown"/>
     </Grid>
 </UserControl>

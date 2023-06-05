@@ -71,5 +71,21 @@ namespace Hipodrome
                 horse.IsFinish = value;
             }       
         }
+
+        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (textBlockPosition.Visibility == Visibility.Visible)
+                textBlockPosition.Visibility = Visibility.Hidden;
+            else
+                textBlockPosition.Visibility = Visibility.Visible;
+        }
+
+        private void Image_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (textBlockSpeed.Visibility == Visibility.Visible)
+                textBlockSpeed.Visibility = Visibility.Hidden;
+            else
+                textBlockSpeed.Visibility = Visibility.Visible;
+        }
     }
 }

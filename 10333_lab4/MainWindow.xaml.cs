@@ -40,6 +40,7 @@ namespace _10333_lab4
             timer.Interval = new TimeSpan(1000);
             timer.Tick += new EventHandler(timer_Tick);
 
+
             timerUpdateSpeed = new DispatcherTimer();
             timerUpdateSpeed.Interval = new TimeSpan(0, 0, 2);
             timerUpdateSpeed.Tick += new EventHandler(timertimerUpdateSpeed_Tick);
@@ -82,7 +83,7 @@ namespace _10333_lab4
             else
             {
                 ((Button)sender).Content = "Pause";
-                timer.IsEnabled = true;
+                timer.IsEnabled = true; 
                 timerUpdateSpeed.IsEnabled = true;
             }
         }
@@ -96,7 +97,14 @@ namespace _10333_lab4
         {
             for (int i = 0; i < 3; i++) 
             {
-                horses[i].XHorse += (float)horses[i].GetSpeed() / 12000f;
+                int k = 0; // postion of horse
+                for (int j = 0; j < 3; j++)
+                {
+                    if (horses[i].XHorse <= horses[j].XHorse)
+                        k++;
+                }
+                horses[i].UpdatePosition(k);
+                horses[i].XHorse += (float)horses[i].GetSpeed() / 1000f;
             }
         }
     }
