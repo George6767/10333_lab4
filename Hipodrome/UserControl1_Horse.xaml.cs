@@ -28,10 +28,12 @@ namespace Hipodrome
 
             textBlockSpeed.DataContext = horse;
             Binding bindingSpeed = new Binding("Speed");
+            bindingSpeed.Converter =new SpeedToString();
             textBlockSpeed.SetBinding(TextBlock.TextProperty, bindingSpeed);
 
             textBlockPosition.DataContext = horse;
             Binding bindingPosition = new Binding("Position");
+            bindingPosition.Converter =new PositionToString();
             textBlockPosition.SetBinding(TextBlock.TextProperty, bindingPosition);
 
             this.DataContext = horse;
