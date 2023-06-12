@@ -23,6 +23,8 @@ namespace _10333_lab4
     {
         Canvas[] canvases = new Canvas[3];
         Hipodrome.UserControl1_Horse[] horses = new Hipodrome.UserControl1_Horse[3];
+        Hipodrome.UserControlFinish[] finishes = new Hipodrome.UserControlFinish[3];
+        Hipodrome.UserControlPosition[] positions = new Hipodrome.UserControlPosition[3];
         DispatcherTimer timer, timerUpdateSpeed;
         Random random = new Random(); 
         bool flStart = false;
@@ -44,16 +46,23 @@ namespace _10333_lab4
             timerUpdateSpeed = new DispatcherTimer();
             timerUpdateSpeed.Interval = new TimeSpan(0, 0, 2);
             timerUpdateSpeed.Tick += new EventHandler(timertimerUpdateSpeed_Tick);
-
         }
         private void Start()
         {
             for (int i = 0; i < 3; i++)
             {
                 canvases[i].Children.Clear();
+
+                finishes[i] = new Hipodrome.UserControlFinish();
+                canvases[i].Children.Add(finishes[i]);
+                Canvas.SetRight(finishes[i], 0);
+
                 horses[i] = new Hipodrome.UserControl1_Horse(random.Next(20, 50));
                 canvases[i].Children.Add(horses[i]);
 
+                positions[i] = new Hipodrome.UserControlPosition();
+                Canvas.SetLeft(positions[i], 50);
+                canvases[i].Children.Add(positions[i]);
             }
             timer.Start();
             timerUpdateSpeed.Start();
@@ -63,6 +72,8 @@ namespace _10333_lab4
         {
             for (int i = 0; i < 3; i++)
             {
+                if (horses[i].IsFinish)
+                    continue;
                 horses[i].UpdateSpeed(random.Next(30, 80));
             }
         }
@@ -97,14 +108,27 @@ namespace _10333_lab4
         {
             for (int i = 0; i < 3; i++) 
             {
+                if (horses[i].IsFinish)
+                    continue;
                 int k = 0; // postion of horse
                 for (int j = 0; j < 3; j++)
                 {
-                    if (horses[i].XHorse <= horses[j].XHorse)
+                    if (horses[j].IsFinish || horses[i].XHorse <= horses[j].XHorse)  // aloso it is not finish
                         k++;
                 }
-                horses[i].UpdatePosition(k);
-                horses[i].XHorse += (float)horses[i].GetSpeed() / 1000f;
+                if (horses[i].XHorse < 1100)
+                {
+                    horses[i].UpdatePosition(k);
+                    horses[i].XHorse += (float)horses[i].GetSpeed() / 300f;
+                }
+                else
+                {
+                    // hose at finish for first time
+                    horses[i].UpdatePosition(k);
+                    positions[i].SetPosition(k);
+                    horses[i].IsFinish = true;
+
+                }
             }
         }
     }
